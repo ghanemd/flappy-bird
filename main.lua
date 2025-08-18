@@ -96,12 +96,12 @@ function love.load()
     })
 
     -- initialize state machine with all state-returning functions
-    gStateMachine = StateMachine {
+    gStateMachine = StateMachine ({
         ['title'] = function() return TitleScreenState() end,
         ['countdown'] = function() return CountdownState() end,
         ['play'] = function() return PlayState() end,
         ['score'] = function() return ScoreState() end
-    }
+    })
     gStateMachine:change('title')
 
     -- initialize input table

@@ -10,7 +10,7 @@
 	It is expect the init function, when called, will return a table with
 	Render, Update, Enter and Exit methods.
 
-	gStateMachine = StateMachine {
+	gStateMachine = StateMachine ({
 			['MainMenu'] = function()
 				return MainMenu()
 			end,
@@ -20,7 +20,7 @@
 			['GameOver'] = function()
 				return GameOver()
 			end,
-	}
+	})
 	gStateMachine:change("MainGame")
 
 	Arguments passed into the Change function after the state name
