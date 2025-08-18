@@ -15,6 +15,8 @@ PIPE_HEIGHT = 288
 BIRD_WIDTH = 38
 BIRD_HEIGHT = 24
 
+local pauseImage = love.graphics.newImage('assets/images/pause.png')
+
 function PlayState:init()
     self.bird = Bird()
     self.pipePairs = {}
@@ -110,6 +112,9 @@ function PlayState:update(dt)
 
     if love.keyboard.wasPressed('p') then 
         self.pause = not self.pause
+        if self.pause then 
+            sounds['pause']:play()
+        end
     end
 
 
@@ -124,6 +129,11 @@ function PlayState:render()
     love.graphics.print('Score: ' .. tostring(self.score), 8, 8)
 
     self.bird:render()
+
+    if self.pause then 
+        love.graphics.draw(pauseImage, VIRTUAL_WIDTH / 2 - pauseImage:getWidth() / 2, VIRTUAL_HEIGHT / 2 - pauseImage:getWidth() / 2)
+    end
+    
 end
 
 --[[
