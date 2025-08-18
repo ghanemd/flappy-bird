@@ -113,7 +113,10 @@ function PlayState:update(dt)
     if love.keyboard.wasPressed('p') then 
         self.pause = not self.pause
         if self.pause then 
+            sounds['music']:pause()
             sounds['pause']:play()
+        else
+            sounds['music']:play()
         end
     end
 
